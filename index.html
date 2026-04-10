@@ -13,7 +13,6 @@
   --card:#ffffff;
   --burgundy:#7b1c2e;
   --burgundy-dark:#5a1420;
-  --burgundy-light:#9e2438;
   --burgundy-pale:#f5e8ea;
   --burgundy-pale2:#eddde0;
   --text:#1a1015;
@@ -22,24 +21,13 @@
   --border:#e2d8dc;
   --border2:#d4c5cb;
   --radius:10px;
-  --shadow:0 4px 24px rgba(123,28,46,.1);
-  --shadow-lg:0 12px 48px rgba(123,28,46,.18);
+  --shadow-lg:0 12px 48px rgba(123,28,46,.16);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:15px;line-height:1.65;}
 a{text-decoration:none;color:inherit;}
 button{cursor:pointer;border:none;outline:none;font-family:inherit;}
-
-/* LOADER */
-#loader{position:fixed;inset:0;background:var(--burgundy);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .6s ease,visibility .6s;}
-#loader.done{opacity:0;visibility:hidden;}
-.ld-logo{font-family:'Playfair Display',serif;font-size:52px;color:#fff;letter-spacing:3px;margin-bottom:24px;}
-.ld-logo span{color:rgba(255,255,255,.38);}
-.ld-bar-wrap{width:200px;height:3px;background:rgba(255,255,255,.18);border-radius:2px;overflow:hidden;}
-.ld-bar{height:100%;background:#fff;border-radius:2px;animation:ldBar 1.9s ease forwards;}
-@keyframes ldBar{from{width:0}to{width:100%}}
-.ld-txt{font-size:12px;color:rgba(255,255,255,.45);margin-top:14px;letter-spacing:2px;text-transform:uppercase;}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;background:rgba(248,246,243,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:68px;}
@@ -50,19 +38,14 @@ nav{position:sticky;top:0;z-index:100;background:rgba(248,246,243,.96);backdrop-
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--burgundy);border-radius:1px;transition:width .25s;}
 .nav-links a:hover{color:var(--burgundy);}
 .nav-links a:hover::after{width:100%;}
-.nav-right{display:flex;align-items:center;gap:14px;}
-.sync-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 12px;}
-.dot{width:7px;height:7px;border-radius:50%;background:#27ae60;box-shadow:0 0 6px #27ae60;animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .cart-btn{background:var(--burgundy);color:#fff;border-radius:8px;padding:10px 22px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;transition:background .2s,transform .15s;}
 .cart-btn:hover{background:var(--burgundy-dark);transform:translateY(-1px);}
 .cart-count{background:#fff;color:var(--burgundy);border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;}
 
 /* HERO */
-.hero{background:var(--burgundy);padding:0 48px;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:560px;position:relative;overflow:hidden;}
-.hero::after{content:'';position:absolute;right:0;top:0;width:50%;height:100%;background:rgba(0,0,0,.18);clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);}
+.hero{background:var(--burgundy);padding:0 48px;display:grid;grid-template-columns:1fr 1fr;align-items:center;min-height:520px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;right:0;top:0;width:50%;height:100%;background:rgba(0,0,0,.18);clip-path:polygon(10% 0,100% 0,100% 100%,0 100%);pointer-events:none;}
 .hero-content{position:relative;z-index:2;padding:80px 0;}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:6px 16px;font-size:11px;color:rgba(255,255,255,.8);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
 .hero h1{font-family:'Playfair Display',serif;font-size:66px;line-height:.93;font-weight:900;color:#fff;margin-bottom:22px;}
 .hero h1 em{color:rgba(255,255,255,.32);font-style:italic;display:block;}
 .hero-sub{color:rgba(255,255,255,.58);font-size:16px;max-width:400px;margin-bottom:38px;font-weight:300;line-height:1.7;}
@@ -73,37 +56,45 @@ nav{position:sticky;top:0;z-index:100;background:rgba(248,246,243,.96);backdrop-
 .btn-o:hover{border-color:rgba(255,255,255,.7);}
 .hero-right{position:relative;z-index:2;display:flex;flex-direction:column;gap:14px;padding:60px 0 60px 48px;}
 .hstat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:16px;}
-.hstat-icon{font-size:30px;}
+.hstat-icon{font-size:28px;}
 .hstat-val{font-family:'Playfair Display',serif;font-size:26px;color:#fff;font-weight:700;}
 .hstat-label{font-size:12px;color:rgba(255,255,255,.48);margin-top:2px;}
 
-/* SECTIONS */
-section{padding:68px 48px;}
-.s-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;}
-.s-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;letter-spacing:-.5px;}
-.s-sub{font-size:13px;color:var(--muted);margin-top:5px;}
-.see-all{font-size:13px;font-weight:600;color:var(--burgundy);}
-
-/* CATEGORIES BAR */
-.cat-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 48px;}
+/* CAT BAR */
+.cat-bar{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 48px;}
 .cat-row{display:flex;gap:10px;flex-wrap:wrap;}
-.cat-pill{display:flex;align-items:center;gap:7px;background:var(--bg);border:1.5px solid var(--border);border-radius:40px;padding:9px 18px;cursor:pointer;font-size:13px;font-weight:500;color:var(--text-mid);transition:all .2s;}
+.cat-pill{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:40px;padding:8px 18px;cursor:pointer;font-size:13px;font-weight:500;color:var(--text-mid);transition:all .2s;}
 .cat-pill:hover{border-color:var(--burgundy);color:var(--burgundy);}
 .cat-pill.active{background:var(--burgundy);border-color:var(--burgundy);color:#fff;}
-.cat-emoji{font-size:16px;}
-.cat-cnt{font-size:11px;opacity:.6;}
+.cat-cnt{font-size:11px;opacity:.65;}
 
-/* FILTERS */
-.filter-row{display:flex;align-items:center;gap:10px;margin-bottom:30px;flex-wrap:wrap;}
+/* SECTION */
+section{padding:64px 48px;}
+.s-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;}
+.s-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;letter-spacing:-.5px;}
+.s-sub{font-size:13px;color:var(--muted);margin-top:5px;}
+
+/* FILTER */
+.filter-row{display:flex;align-items:center;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
 .fl{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
 .chip{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:500;color:var(--muted);transition:all .2s;}
 .chip:hover,.chip.active{border-color:var(--burgundy);color:var(--burgundy);background:var(--burgundy-pale);}
+
+/* SKELETON */
+.skeleton-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.sk-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.sk-img{height:192px;background:linear-gradient(90deg,var(--surface) 25%,var(--border) 50%,var(--surface) 75%);background-size:200% 100%;animation:sh 1.4s infinite;}
+@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk-body{padding:16px;display:flex;flex-direction:column;gap:10px;}
+.sk-l{height:12px;border-radius:4px;background:linear-gradient(90deg,var(--surface) 25%,var(--border) 50%,var(--surface) 75%);background-size:200% 100%;animation:sh 1.4s infinite;}
+.sk-l.s{width:55%;}
+.sk-l.xs{width:35%;}
 
 /* PRODUCTS */
 .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
 .pc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:transform .22s,box-shadow .22s,border-color .2s;}
 .pc:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--border2);}
-.pc-img{background:var(--burgundy-pale);height:192px;display:flex;align-items:center;justify-content:center;font-size:74px;position:relative;transition:background .2s;}
+.pc-img{background:var(--burgundy-pale);height:192px;display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;transition:background .2s;}
 .pc:hover .pc-img{background:var(--burgundy-pale2);}
 .badge{position:absolute;top:11px;left:11px;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:4px 9px;border-radius:5px;}
 .b-sale{background:var(--burgundy);color:#fff;}
@@ -118,17 +109,25 @@ section{padding:68px 48px;}
 .pc-old{font-size:12px;color:var(--muted);text-decoration:line-through;margin-left:5px;font-family:'Manrope',sans-serif;}
 .add-btn{background:var(--burgundy);color:#fff;border-radius:7px;padding:8px 14px;font-size:12px;font-weight:600;transition:background .2s;}
 .add-btn:hover{background:var(--burgundy-dark);}
-.pc-stock-ok{font-size:11px;color:#1e5c3a;margin-top:8px;font-weight:500;}
-.pc-stock-low{font-size:11px;color:var(--burgundy);margin-top:8px;font-weight:500;}
-.pc-code{font-size:10px;color:var(--muted);margin-top:3px;font-family:'Courier New',monospace;}
+.stock-ok{font-size:11px;color:#1e5c3a;margin-top:8px;font-weight:500;}
+.stock-low{font-size:11px;color:var(--burgundy);margin-top:8px;font-weight:500;}
+.stock-none{font-size:11px;color:var(--muted);margin-top:8px;font-weight:500;}
+
+/* ERROR */
+.err-box{text-align:center;padding:64px 20px;}
+.err-icon{font-size:52px;margin-bottom:16px;}
+.err-box h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px;}
+.err-box p{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6;}
+.retry-btn{background:var(--burgundy);color:#fff;border-radius:8px;padding:11px 26px;font-size:13px;font-weight:600;transition:background .2s;}
+.retry-btn:hover{background:var(--burgundy-dark);}
 
 /* PRODUCT MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(20,8,12,.52);z-index:200;align-items:center;justify-content:center;padding:28px;}
 .overlay.open{display:flex;}
-.pp{background:var(--white);border-radius:14px;max-width:880px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.22);animation:ppIn .24s ease;}
+.pp{background:var(--white);border-radius:14px;max-width:880px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.22);animation:ppIn .24s ease;position:relative;}
 @keyframes ppIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
 .pp-top{display:grid;grid-template-columns:1fr 1fr;}
-.pp-img-wrap{background:var(--burgundy-pale);border-radius:14px 0 0 0;height:360px;display:flex;align-items:center;justify-content:center;font-size:110px;}
+.pp-img-w{background:var(--burgundy-pale);border-radius:14px 0 0 0;height:360px;display:flex;align-items:center;justify-content:center;font-size:110px;}
 .pp-info{padding:36px;}
 .pp-brand{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:8px;}
 .pp-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:12px;line-height:1.2;}
@@ -136,24 +135,25 @@ section{padding:68px 48px;}
 .pp-price{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--burgundy);}
 .pp-old-row{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
 .pp-old{font-size:15px;color:var(--muted);text-decoration:line-through;}
-.pp-discount{background:var(--burgundy);color:#fff;border-radius:5px;padding:2px 8px;font-size:11px;font-weight:700;}
+.pp-disc{background:var(--burgundy);color:#fff;border-radius:5px;padding:2px 8px;font-size:11px;font-weight:700;}
 .pp-meta{display:flex;flex-direction:column;gap:7px;margin:16px 0 22px;}
-.pp-meta-r{display:flex;gap:8px;font-size:13px;}
-.pp-meta-k{color:var(--muted);min-width:96px;}
-.pp-meta-v{font-weight:600;}
-.pp-add-btn{width:100%;background:var(--burgundy);color:#fff;padding:14px;border-radius:9px;font-size:14px;font-weight:700;transition:background .2s;margin-bottom:10px;}
-.pp-add-btn:hover{background:var(--burgundy-dark);}
-.pp-close-btn{position:absolute;top:14px;right:14px;background:var(--bg);border:1px solid var(--border);color:var(--text-mid);border-radius:8px;padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;}
-.pp-bottom{padding:28px 36px;border-top:1px solid var(--border);}
-.pp-bottom h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:14px;}
-.pp-specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.pp-spec{background:var(--bg);border-radius:8px;padding:12px 16px;}
-.pp-sk{font-size:11px;color:var(--muted);margin-bottom:3px;}
-.pp-sv{font-size:14px;font-weight:600;}
+.pp-mr{display:flex;gap:8px;font-size:13px;}
+.pp-mk{color:var(--muted);min-width:96px;}
+.pp-mv{font-weight:600;}
+.pp-add{width:100%;background:var(--burgundy);color:#fff;padding:14px;border-radius:9px;font-size:14px;font-weight:700;transition:background .2s;}
+.pp-add:hover{background:var(--burgundy-dark);}
+.pp-add:disabled{background:var(--muted);cursor:not-allowed;}
+.pp-close{position:absolute;top:14px;right:14px;background:var(--bg);border:1px solid var(--border);color:var(--text-mid);border-radius:8px;padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;z-index:2;}
+.pp-specs{padding:24px 36px;border-top:1px solid var(--border);}
+.pp-specs h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:14px;}
+.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.spec-item{background:var(--bg);border-radius:8px;padding:12px 16px;}
+.spec-k{font-size:11px;color:var(--muted);margin-bottom:3px;}
+.spec-v{font-size:14px;font-weight:600;}
 
 /* CART */
-.cart-overlay{display:none;position:fixed;inset:0;background:rgba(20,8,12,.5);z-index:300;justify-content:flex-end;}
-.cart-overlay.open{display:flex;}
+.cart-ov{display:none;position:fixed;inset:0;background:rgba(20,8,12,.5);z-index:300;justify-content:flex-end;}
+.cart-ov.open{display:flex;}
 .cart-drawer{background:var(--white);width:440px;height:100vh;display:flex;flex-direction:column;box-shadow:-6px 0 28px rgba(0,0,0,.12);animation:slideR .26s ease;}
 @keyframes slideR{from{transform:translateX(100%)}to{transform:translateX(0)}}
 .cd-head{padding:22px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
@@ -161,7 +161,7 @@ section{padding:68px 48px;}
 .cd-close{background:var(--bg);border:1px solid var(--border);color:var(--text-mid);border-radius:8px;width:36px;height:36px;font-size:15px;display:flex;align-items:center;justify-content:center;}
 .cd-body{flex:1;overflow-y:auto;padding:18px 28px;}
 .cd-empty{text-align:center;padding:60px 20px;color:var(--muted);}
-.cd-empty .ce-icon{font-size:52px;margin-bottom:14px;}
+.cd-empty .ei{font-size:52px;margin-bottom:12px;}
 .cart-item{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);}
 .ci-img{width:62px;height:62px;background:var(--burgundy-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;}
 .ci-inf{flex:1;}
@@ -172,17 +172,16 @@ section{padding:68px 48px;}
 .ci-rm{font-size:12px;color:var(--muted);cursor:pointer;margin-left:auto;padding:4px;}
 .ci-rm:hover{color:var(--burgundy);}
 .cd-foot{padding:18px 28px;border-top:1px solid var(--border);}
-.cd-tot-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
-.cd-tot-label{font-size:14px;color:var(--muted);}
+.cd-tot{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
+.cd-tot-lbl{font-size:14px;color:var(--muted);}
 .cd-tot-val{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--burgundy);}
 .checkout-btn{width:100%;background:var(--burgundy);color:#fff;padding:14px;border-radius:9px;font-size:14px;font-weight:700;transition:background .2s;}
 .checkout-btn:hover{background:var(--burgundy-dark);}
-.checkout-note{text-align:center;font-size:11px;color:var(--muted);margin-top:9px;line-height:1.5;}
 
 /* CONFIRM */
 .confirm-ov{display:none;position:fixed;inset:0;background:rgba(20,8,12,.58);z-index:400;align-items:center;justify-content:center;}
 .confirm-ov.open{display:flex;}
-.confirm-box{background:var(--white);border-radius:16px;max-width:430px;width:100%;padding:44px 38px;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.18);animation:ppIn .25s ease;}
+.confirm-box{background:var(--white);border-radius:16px;max-width:420px;width:100%;padding:44px 38px;text-align:center;box-shadow:0 32px 80px rgba(0,0,0,.18);animation:ppIn .25s ease;}
 .cb-icon{font-size:54px;margin-bottom:18px;}
 .cb-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:10px;}
 .cb-sub{font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6;}
@@ -190,26 +189,18 @@ section{padding:68px 48px;}
 .cb-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;}
 .cb-row .lbl{color:var(--muted);}
 .cb-row .val{font-weight:600;}
-.cb-ok{width:100%;background:var(--burgundy);color:#fff;padding:13px;border-radius:8px;font-size:14px;font-weight:700;transition:background .2s;}
+.cb-ok{width:100%;background:var(--burgundy);color:#fff;padding:13px;border-radius:8px;font-size:14px;font-weight:700;}
 .cb-ok:hover{background:var(--burgundy-dark);}
 
 /* HOW */
 .how-sec{background:var(--burgundy);padding:72px 48px;}
 .how-sec .s-title{color:#fff;}
 .how-sec .s-sub{color:rgba(255,255,255,.45);}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:26px 20px;}
 .step-n{font-family:'Playfair Display',serif;font-size:38px;color:rgba(255,255,255,.22);font-weight:900;margin-bottom:14px;}
 .step-t{font-weight:700;font-size:14px;color:#fff;margin-bottom:7px;}
 .step-d{font-size:13px;color:rgba(255,255,255,.48);line-height:1.65;}
-
-/* JSON */
-.json-sec{background:var(--surface);border-top:1px solid var(--border);padding:68px 48px;}
-.json-tabs{display:flex;gap:8px;margin-bottom:16px;}
-.jt{background:var(--white);border:1px solid var(--border);border-radius:7px;padding:7px 16px;font-size:12px;font-weight:600;color:var(--muted);transition:all .2s;}
-.jt:hover,.jt.active{background:var(--burgundy);border-color:var(--burgundy);color:#fff;}
-.json-code{background:#1a0d11;border-radius:12px;padding:28px;overflow-x:auto;font-family:'Courier New',monospace;font-size:12.5px;line-height:1.85;color:#c9d1d9;}
-.jk{color:#89b4fa;}.js{color:#f5c2e7;}.jn{color:#f9e2af;}.jb{color:#f38ba8;}.jc{color:#6c7086;}
 
 /* FOOTER */
 footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 48px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px;}
@@ -218,7 +209,7 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
 .ft-h{font-weight:700;font-size:12px;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
 .ft-a{display:block;font-size:13px;margin-bottom:7px;transition:color .2s;}
 .ft-a:hover{color:#fff;}
-.ft-copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-top:22px;font-size:11px;grid-column:1/-1;color:rgba(255,255,255,.4);}
+.ft-copy{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-top:22px;font-size:11px;grid-column:1/-1;color:rgba(255,255,255,.35);}
 
 /* TOAST */
 .toast{position:fixed;bottom:28px;right:28px;background:var(--burgundy);color:#fff;padding:12px 22px;border-radius:10px;font-size:13px;font-weight:500;z-index:999;transform:translateY(120%);opacity:0;transition:transform .3s,opacity .3s;box-shadow:0 8px 24px rgba(123,28,46,.35);}
@@ -226,26 +217,16 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
 
 @media(max-width:960px){
   .hero{grid-template-columns:1fr;padding:48px 24px;}
-  .hero::after{display:none;}
-  .hero-right{display:none;}
-  .hero h1{font-size:46px;}
-  .products-grid{grid-template-columns:repeat(2,1fr);}
-  .steps{grid-template-columns:repeat(2,1fr);}
-  nav,section,.cat-bar,.json-sec,.how-sec,footer{padding-left:24px;padding-right:24px;}
+  .hero::after{display:none;}.hero-right{display:none;}.hero h1{font-size:44px;}
+  .products-grid,.skeleton-grid{grid-template-columns:repeat(2,1fr);}
+  .steps{grid-template-columns:1fr 1fr;}
+  nav,section,.cat-bar,.how-sec,footer{padding-left:24px;padding-right:24px;}
   footer{grid-template-columns:1fr;}
-  .pp-top{grid-template-columns:1fr;}
-  .pp-img-wrap{border-radius:14px 14px 0 0;height:220px;}
+  .pp-top{grid-template-columns:1fr;}.pp-img-w{border-radius:14px 14px 0 0;height:220px;}
 }
 </style>
 </head>
 <body>
-
-<!-- LOADER -->
-<div id="loader">
-  <div class="ld-logo">Sport<span>Max</span></div>
-  <div class="ld-bar-wrap"><div class="ld-bar"></div></div>
-  <div class="ld-txt">Синхронизация с 1С:Розница KZ...</div>
-</div>
 
 <!-- NAV -->
 <nav>
@@ -256,54 +237,44 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
   <div class="nav-links">
     <a href="#hero">Главная</a>
     <a href="#catalog">Каталог</a>
-    <a href="#how">Интеграция 1С</a>
+    <a href="#delivery">Доставка</a>
   </div>
-  <div class="nav-right">
-    <div class="sync-badge">
-      <div class="dot"></div>
-      <span id="syncLabel">Подключение...</span>
-    </div>
-    <button class="cart-btn" onclick="openCart()">
-      🛍 Корзина <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </div>
+  <button class="cart-btn" onclick="openCart()">
+    🛍 Корзина <span class="cart-count" id="cartCount">0</span>
+  </button>
 </nav>
 
 <!-- HERO -->
 <div class="hero" id="hero">
   <div class="hero-content">
-    <div class="hero-tag">⚡ Автосинхронизация с 1С:Розница KZ</div>
     <h1>Спорт —<em>это победа</em></h1>
-    <p class="hero-sub">Профессиональное снаряжение для любого вида спорта. Цены и остатки обновляются автоматически из 1С.</p>
+    <p class="hero-sub">Профессиональное снаряжение для любого вида спорта. Актуальные цены и наличие на складе.</p>
     <div class="hero-btns">
       <a href="#catalog" class="btn-w">Смотреть каталог</a>
-      <a href="#how" class="btn-o">Как работает интеграция</a>
+      <a href="#delivery" class="btn-o">Условия доставки</a>
     </div>
   </div>
   <div class="hero-right">
-    <div class="hstat"><div class="hstat-icon">📦</div><div><div class="hstat-val" id="hTotal">—</div><div class="hstat-label">Товаров из 1С</div></div></div>
-    <div class="hstat"><div class="hstat-icon">🔄</div><div><div class="hstat-val">Live</div><div class="hstat-label">Синхронизация остатков</div></div></div>
-    <div class="hstat"><div class="hstat-icon">📋</div><div><div class="hstat-val">1С</div><div class="hstat-label">Заказы → Розница KZ</div></div></div>
+    <div class="hstat"><div class="hstat-icon">📦</div><div><div class="hstat-val" id="hTotal">—</div><div class="hstat-label">Товаров в каталоге</div></div></div>
+    <div class="hstat"><div class="hstat-icon">🚚</div><div><div class="hstat-val">1–3</div><div class="hstat-label">Дня — доставка по городу</div></div></div>
+    <div class="hstat"><div class="hstat-icon">⭐</div><div><div class="hstat-val">4.9</div><div class="hstat-label">Средняя оценка покупателей</div></div></div>
   </div>
 </div>
 
 <!-- CATEGORIES -->
 <div class="cat-bar" id="catalog">
-  <div class="cat-row">
-    <button class="cat-pill active" onclick="filterCat('all',this)"><span class="cat-emoji">🏆</span>Все товары<span class="cat-cnt" id="cAll"></span></button>
-    <button class="cat-pill" onclick="filterCat('Футбол',this)"><span class="cat-emoji">⚽</span>Футбол<span class="cat-cnt" id="cFoot"></span></button>
-    <button class="cat-pill" onclick="filterCat('Фитнес',this)"><span class="cat-emoji">🏋️</span>Фитнес<span class="cat-cnt" id="cFit"></span></button>
-    <button class="cat-pill" onclick="filterCat('Бег',this)"><span class="cat-emoji">🏃</span>Бег<span class="cat-cnt" id="cRun"></span></button>
-    <button class="cat-pill" onclick="filterCat('Единоборства',this)"><span class="cat-emoji">🥊</span>Единоборства<span class="cat-cnt" id="cMMA"></span></button>
-    <button class="cat-pill" onclick="filterCat('Плавание',this)"><span class="cat-emoji">🏊</span>Плавание<span class="cat-cnt" id="cSwim"></span></button>
+  <div class="cat-row" id="catRow">
+    <button class="cat-pill active" onclick="filterCat('all',this)">🏆 Все товары <span class="cat-cnt" id="cntAll"></span></button>
   </div>
 </div>
 
-<!-- PRODUCTS SECTION -->
+<!-- PRODUCTS -->
 <section>
   <div class="s-hd">
-    <div><div class="s-title">Каталог товаров</div><div class="s-sub" id="catSub">Загрузка из 1С...</div></div>
-    <span class="see-all">Все товары →</span>
+    <div>
+      <div class="s-title">Каталог товаров</div>
+      <div class="s-sub" id="catSub">Загрузка...</div>
+    </div>
   </div>
   <div class="filter-row">
     <span class="fl">Сортировка:</span>
@@ -313,61 +284,60 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
     <button class="chip" onclick="setSort('new',this)">Новинки</button>
     <button class="chip" onclick="setSort('sale',this)">Со скидкой</button>
   </div>
-  <div class="products-grid" id="grid"></div>
+  <div id="grid">
+    <div class="skeleton-grid">
+      <div class="sk-card"><div class="sk-img"></div><div class="sk-body"><div class="sk-l"></div><div class="sk-l s"></div><div class="sk-l xs"></div></div></div>
+      <div class="sk-card"><div class="sk-img"></div><div class="sk-body"><div class="sk-l"></div><div class="sk-l s"></div><div class="sk-l xs"></div></div></div>
+      <div class="sk-card"><div class="sk-img"></div><div class="sk-body"><div class="sk-l"></div><div class="sk-l s"></div><div class="sk-l xs"></div></div></div>
+      <div class="sk-card"><div class="sk-img"></div><div class="sk-body"><div class="sk-l"></div><div class="sk-l s"></div><div class="sk-l xs"></div></div></div>
+    </div>
+  </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how-sec" id="how">
-  <div class="s-hd"><div><div class="s-title">Схема интеграции с 1С</div><div class="s-sub" style="color:rgba(255,255,255,.42)">HTTP-сервис через расширение конфигурации 1С:Розница KZ</div></div></div>
+<!-- DELIVERY -->
+<section class="how-sec" id="delivery">
+  <div class="s-hd"><div>
+    <div class="s-title">Доставка и оплата</div>
+    <div class="s-sub" style="color:rgba(255,255,255,.42)">Быстро, удобно, надёжно</div>
+  </div></div>
   <div class="steps">
-    <div class="step"><div class="step-n">01</div><div class="step-t">GET-запрос с сайта</div><div class="step-d">При загрузке страницы JavaScript отправляет fetch() к HTTP-сервису 1С для получения номенклатуры, цен и остатков</div></div>
-    <div class="step"><div class="step-n">02</div><div class="step-t">Расширение конфигурации</div><div class="step-d">Расширение (без изменения типовой конфигурации) добавляет HTTP-сервис, формирующий JSON из справочника «Номенклатура»</div></div>
-    <div class="step"><div class="step-n">03</div><div class="step-t">JSON → Каталог</div><div class="step-d">Сайт получает массив товаров, рендерит карточки с актуальными ценами и остатками склада без перезагрузки</div></div>
-    <div class="step"><div class="step-n">04</div><div class="step-t">Заказ → 1С</div><div class="step-d">POST-запрос с данными корзины создаёт «Заказ клиента» в 1С:Розница KZ и резервирует товар на складе</div></div>
+    <div class="step"><div class="step-n">01</div><div class="step-t">Выбор товара</div><div class="step-d">Добавьте нужные товары в корзину. Наличие на складе отображается в карточке каждого товара.</div></div>
+    <div class="step"><div class="step-n">02</div><div class="step-t">Оформление заказа</div><div class="step-d">Укажите контактные данные и адрес. Менеджер свяжется с вами в течение 30 минут для подтверждения.</div></div>
+    <div class="step"><div class="step-n">03</div><div class="step-t">Получение</div><div class="step-d">Доставка по городу 1–3 дня. Самовывоз бесплатно. Оплата наличными или картой при получении.</div></div>
   </div>
-</section>
-
-<!-- JSON -->
-<section class="json-sec">
-  <div class="s-hd"><div><div class="s-title">Структура данных из 1С</div><div class="s-sub">Примеры JSON — ответ HTTP-сервиса расширения конфигурации</div></div></div>
-  <div class="json-tabs">
-    <button class="jt active" onclick="showJson('get',this)">GET /products</button>
-    <button class="jt" onclick="showJson('post',this)">POST /order</button>
-  </div>
-  <div class="json-code" id="jsonCode"></div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div>
     <div class="ft-logo">SportMax</div>
-    <div class="ft-sub">Дипломный проект: Интернет-магазин с интеграцией 1С:Розница KZ.<br>GitHub Pages + 1С HTTP-сервис через расширение конфигурации.</div>
-    <div class="ft-copy">© 2024 SportMax — все данные синхронизируются из 1С:Розница KZ</div>
+    <div class="ft-sub">Интернет-магазин профессиональных спортивных товаров. Широкий ассортимент, актуальные цены.</div>
+    <div class="ft-copy">© 2024 SportMax. Все права защищены.</div>
   </div>
   <div>
     <div class="ft-h">Каталог</div>
-    <a class="ft-a" href="#catalog">⚽ Футбол</a>
-    <a class="ft-a" href="#catalog">🏋️ Фитнес</a>
-    <a class="ft-a" href="#catalog">🏃 Бег</a>
-    <a class="ft-a" href="#catalog">🥊 Единоборства</a>
-    <a class="ft-a" href="#catalog">🏊 Плавание</a>
+    <a class="ft-a" href="#catalog">Все товары</a>
+    <a class="ft-a" href="#catalog">Футбол</a>
+    <a class="ft-a" href="#catalog">Фитнес</a>
+    <a class="ft-a" href="#catalog">Бег</a>
   </div>
   <div>
-    <div class="ft-h">Интеграция</div>
-    <a class="ft-a" href="#how">HTTP-сервис 1С</a>
-    <a class="ft-a" href="#how">Расширение конфигурации</a>
-    <a class="ft-a" href="#how">Схема обмена данными</a>
-    <a class="ft-a" href="#how">Формат JSON</a>
+    <div class="ft-h">Информация</div>
+    <a class="ft-a" href="#delivery">Доставка и оплата</a>
+    <a class="ft-a" href="#">Возврат товара</a>
+    <a class="ft-a" href="#">Контакты</a>
   </div>
 </footer>
 
 <!-- PRODUCT MODAL -->
-<div class="overlay" id="ppOverlay" onclick="closeIfBg(event,'ppOverlay')">
-  <div class="pp" id="ppContent" style="position:relative"></div>
+<div class="overlay" id="ppOverlay" onclick="bgClose(event,'ppOverlay')">
+  <div class="pp" id="ppContent">
+    <button class="pp-close" onclick="closeModal('ppOverlay')">✕ Закрыть</button>
+  </div>
 </div>
 
 <!-- CART -->
-<div class="cart-overlay" id="cartOverlay" onclick="closeIfBg(event,'cartOverlay')">
+<div class="cart-ov" id="cartOv" onclick="bgClose(event,'cartOv')">
   <div class="cart-drawer">
     <div class="cd-head">
       <div class="cd-title">Корзина</div>
@@ -375,12 +345,11 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
     </div>
     <div class="cd-body" id="cartBody"></div>
     <div class="cd-foot">
-      <div class="cd-tot-row">
-        <span class="cd-tot-label">Итого к оплате</span>
+      <div class="cd-tot">
+        <span class="cd-tot-lbl">Итого к оплате</span>
         <span class="cd-tot-val" id="cartTot">0 ₸</span>
       </div>
-      <button class="checkout-btn" onclick="checkout()">Оформить заказ в 1С</button>
-      <div class="checkout-note">POST-запрос создаст «Заказ клиента» в 1С:Розница KZ</div>
+      <button class="checkout-btn" onclick="checkout()">Оформить заказ</button>
     </div>
   </div>
 </div>
@@ -390,9 +359,9 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
   <div class="confirm-box">
     <div class="cb-icon">✅</div>
     <div class="cb-title">Заказ оформлен!</div>
-    <div class="cb-sub">Данные переданы в 1С:Розница KZ через HTTP-сервис расширения.</div>
+    <div class="cb-sub">Менеджер свяжется с вами в ближайшее время для подтверждения заказа.</div>
     <div class="cb-meta" id="cbMeta"></div>
-    <button class="cb-ok" onclick="document.getElementById('confirmOv').classList.remove('open')">Закрыть</button>
+    <button class="cb-ok" onclick="closeModal('confirmOv')">Закрыть</button>
   </div>
 </div>
 
@@ -400,238 +369,265 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── DATA (эмуляция JSON из 1С) ───
-const P=[
-  {id:"P001",code:"ADID-F101",name:"Бутсы Predator Accuracy",brand:"Adidas",cat:"Футбол",price:42000,oldPrice:56000,stock:12,e:"👟",badge:"sale",desc:"Профессиональные бутсы для натурального газона. Зона контроля мяча PRIMEMESH. Поддержка голеностопа.",specs:{Материал:"Синтетика + кожа",Подошва:"FG твёрдый грунт",Размеры:"40–46",Вес:"210 г"},isNew:false},
-  {id:"P002",code:"NIKE-B202",name:"Мяч Strike — FIFA Quality",brand:"Nike",cat:"Футбол",price:18500,oldPrice:null,stock:34,e:"⚽",badge:"hit",desc:"Тренировочный мяч FIFA Quality. Усиленная камера. Стабильный отскок. Размер 5.",specs:{Размер:"5",Стандарт:"FIFA Quality",Покрытие:"Термосшивка",Вес:"420 г"},isNew:false},
-  {id:"P003",code:"REEBOK-D303",name:"Гантели Hex 2×10 кг",brand:"Reebok",cat:"Фитнес",price:28000,oldPrice:null,stock:5,e:"🏋️",badge:"new",desc:"Шестигранные гантели с резиновым покрытием. Хромированная рукоятка. Набор 2 шт × 10 кг.",specs:{Вес:"2 × 10 кг",Покрытие:"Резина",Рукоятка:"Хром, накатка",Форма:"Hex"},isNew:true},
-  {id:"P004",code:"ASICS-R404",name:"Кроссовки Gel-Nimbus 26",brand:"Asics",cat:"Бег",price:65000,oldPrice:82000,stock:8,e:"👟",badge:"sale",desc:"Максимальная амортизация для длинных дистанций. FlyteFoam Blast+. Верх из переработанных материалов.",specs:{Назначение:"Длинные дистанции",Технология:"FlyteFoam Blast+",Дроп:"10 мм",Вес:"295 г"},isNew:false},
-  {id:"P005",code:"EVERL-M505",name:"Боксёрские перчатки Pro 16oz",brand:"Everlast",cat:"Единоборства",price:22000,oldPrice:null,stock:15,e:"🥊",badge:null,desc:"Спарринговые перчатки. Натуральная кожа. Многослойная пена. 16 унций.",specs:{Материал:"Натуральная кожа",Вес:"16 OZ",Застёжка:"Липучка",Назначение:"Спарринг"},isNew:false},
-  {id:"P006",code:"PUMA-F606",name:"Форма командная DryCell",brand:"Puma",cat:"Футбол",price:31000,oldPrice:null,stock:20,e:"👕",badge:"new",desc:"Комплект: футболка + шорты. Ткань DryCell отводит влагу. 8 цветов на выбор.",specs:{Состав:"100% полиэстер",Технология:"DryCell",Комплект:"Футболка + шорты",Размеры:"XS–XXL"},isNew:true},
-  {id:"P007",code:"KETTL-G707",name:"Скакалка Speed Rope Pro",brand:"Kettler",cat:"Фитнес",price:8500,oldPrice:11000,stock:42,e:"🪢",badge:"sale",desc:"Для кроссфита и HIIT. Стальной трос с ПВХ-покрытием. Алюминиевые ручки с подшипниками.",specs:{Материал:"Сталь / ПВХ",Ручки:"Алюминий",Подшипники:"Двойные",Длина:"3 м (регул.)"},isNew:false},
-  {id:"P008",code:"UA-R808",name:"Тайтсы Compression Run",brand:"Under Armour",cat:"Бег",price:19000,oldPrice:24000,stock:3,e:"🩱",badge:"sale",desc:"Компрессионные тайтсы. Поддержка мышц. UPF 50+. Задний карман для телефона.",specs:{Состав:"82% полиамид","UPF":"50+",Карман:"Задний",Размеры:"XS–XL"},isNew:false},
-  {id:"P009",code:"SPDO-SW901",name:"Очки для плавания Biofuse",brand:"Speedo",cat:"Плавание",price:12000,oldPrice:null,stock:25,e:"🥽",badge:"new",desc:"Тренировочные очки. Антизапотевающее покрытие. Мягкая уплотнительная прокладка. UV400.",specs:{Линзы:"Поликарбонат",Покрытие:"Anti-fog",Защита:"UV400",Цвета:"4 варианта"},isNew:true},
-  {id:"P010",code:"HEAD-SW902",name:"Шапочка HEAD Silicone Pro",brand:"Head",cat:"Плавание",price:4500,oldPrice:null,stock:60,e:"🎱",badge:"hit",desc:"100% силикон. Гипоаллергенный. Плотное прилегание без складок. Универсальный размер.",specs:{Материал:"100% силикон",Размер:"Универсальный",Аллергены:"Нет",Толщина:"0.5 мм"},isNew:false},
-];
+// ── Адрес каталога ──────────────────────────────────
+const CATALOG_URL = 'http/treidut/catalog.json';
+// ────────────────────────────────────────────────────
 
-let curCat='all', curSort='default', cart=[];
+let products = [];
+let curCat   = 'all';
+let curSort  = 'default';
+let cart     = [];
 
-function fmt(n){return n.toLocaleString('ru-RU');}
-function badgeLbl(b){return b==='sale'?'Скидка':b==='new'?'Новинка':'Хит';}
-function badgeCls(b){return b==='sale'?'b-sale':b==='new'?'b-new':'b-hit';}
-
-function getCounts(){
-  const cats=['Футбол','Фитнес','Бег','Единоборства','Плавание'];
-  const res={all:P.length};
-  cats.forEach(c=>{res[c]=P.filter(p=>p.cat===c).length;});
-  return res;
+// ── Загрузка каталога ───────────────────────────────
+async function loadCatalog() {
+  try {
+    const res = await fetch(CATALOG_URL, { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`Статус: ${res.status}`);
+    const data = await res.json();
+    // поддерживаем два формата: { items: [...] } или просто [...]
+    products = Array.isArray(data) ? data : (data.items || []);
+    onLoaded();
+  } catch (e) {
+    showError(e.message);
+  }
 }
 
-function renderCounts(){
-  const c=getCounts();
-  document.getElementById('cAll').textContent=c.all;
-  document.getElementById('cFoot').textContent=c['Футбол'];
-  document.getElementById('cFit').textContent=c['Фитнес'];
-  document.getElementById('cRun').textContent=c['Бег'];
-  document.getElementById('cMMA').textContent=c['Единоборства'];
-  document.getElementById('cSwim').textContent=c['Плавание'];
-  document.getElementById('hTotal').textContent=c.all;
+function onLoaded() {
+  buildCategories();
+  renderGrid();
+  document.getElementById('hTotal').textContent = products.length;
 }
 
-function getFiltered(){
-  let list=[...P];
-  if(curCat!=='all')list=list.filter(p=>p.cat===curCat);
-  if(curSort==='asc')list.sort((a,b)=>a.price-b.price);
-  else if(curSort==='desc')list.sort((a,b)=>b.price-a.price);
-  else if(curSort==='new')list=[...list.filter(p=>p.isNew),...list.filter(p=>!p.isNew)];
-  else if(curSort==='sale')list=[...list.filter(p=>p.oldPrice),...list.filter(p=>!p.oldPrice)];
+// ── Категории из данных ─────────────────────────────
+function buildCategories() {
+  const cats = [...new Set(products.map(p => p.category).filter(Boolean))];
+  const row  = document.getElementById('catRow');
+  document.getElementById('cntAll').textContent = products.length;
+
+  const catEmoji = { Футбол:'⚽', Фитнес:'🏋️', Бег:'🏃', Единоборства:'🥊', Плавание:'🏊' };
+
+  cats.forEach(cat => {
+    const cnt = products.filter(p => p.category === cat).length;
+    const btn = document.createElement('button');
+    btn.className = 'cat-pill';
+    btn.innerHTML = `${catEmoji[cat] || '🏅'} ${cat} <span class="cat-cnt">${cnt}</span>`;
+    btn.onclick = () => filterCat(cat, btn);
+    row.appendChild(btn);
+  });
+}
+
+// ── Фильтр / сортировка ─────────────────────────────
+function filterCat(cat, el) {
+  curCat = cat;
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  renderGrid();
+}
+
+function setSort(sort, el) {
+  curSort = sort;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderGrid();
+}
+
+function getFiltered() {
+  let list = curCat === 'all' ? [...products] : products.filter(p => p.category === curCat);
+  if (curSort === 'asc')  list.sort((a,b) => a.price - b.price);
+  if (curSort === 'desc') list.sort((a,b) => b.price - a.price);
+  if (curSort === 'new')  list = [...list.filter(p => p.isNew), ...list.filter(p => !p.isNew)];
+  if (curSort === 'sale') list = [...list.filter(p => p.oldPrice), ...list.filter(p => !p.oldPrice)];
   return list;
 }
 
-function filterCat(cat,el){
-  curCat=cat;
-  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  renderGrid();
+// ── Рендер сетки ────────────────────────────────────
+function renderGrid() {
+  const list = getFiltered();
+  document.getElementById('catSub').textContent =
+    curCat === 'all' ? `Все товары — ${list.length} позиций` : `${curCat} — ${list.length} товаров`;
+
+  if (!list.length) {
+    document.getElementById('grid').innerHTML =
+      `<div class="err-box"><div class="err-icon">🔍</div><h3>Товары не найдены</h3><p>В этой категории пока нет товаров.</p></div>`;
+    return;
+  }
+
+  document.getElementById('grid').innerHTML =
+    `<div class="products-grid">${list.map(cardHTML).join('')}</div>`;
 }
 
-function setSort(sort,el){
-  curSort=sort;
-  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  renderGrid();
-}
+function cardHTML(p) {
+  const badgeCls = p.badge === 'sale' ? 'b-sale' : p.badge === 'new' ? 'b-new' : 'b-hit';
+  const badgeLbl = p.badge === 'sale' ? 'Скидка' : p.badge === 'new' ? 'Новинка' : 'Хит';
+  const stock    = Number(p.stock ?? p.quantity ?? 0);
+  const stockCls = stock === 0 ? 'stock-none' : stock <= 5 ? 'stock-low' : 'stock-ok';
+  const stockTxt = stock === 0 ? '✕ Нет в наличии' : stock <= 5 ? `⚠ Осталось ${stock} шт.` : `✓ В наличии: ${stock} шт.`;
+  const desc     = p.description || p.desc || '';
 
-function renderGrid(){
-  const list=getFiltered();
-  document.getElementById('catSub').textContent=
-    curCat==='all'?`Все товары — ${list.length} позиций из 1С:Розница KZ`:`${curCat} — ${list.length} товаров`;
-  document.getElementById('grid').innerHTML=list.map(p=>`
+  return `
     <div class="pc" onclick="openProduct('${p.id}')">
-      <div class="pc-img">${p.e}${p.badge?`<span class="badge ${badgeCls(p.badge)}">${badgeLbl(p.badge)}</span>`:''}</div>
-      <div class="pc-body">
-        <div class="pc-brand">${p.brand}</div>
-        <div class="pc-name">${p.name}</div>
-        <div class="pc-desc">${p.desc.substring(0,68)}…</div>
-        <div class="pc-foot">
-          <div><span class="pc-price">${fmt(p.price)} ₸</span>${p.oldPrice?`<span class="pc-old">${fmt(p.oldPrice)} ₸</span>`:''}</div>
-          <button class="add-btn" onclick="event.stopPropagation();addCart('${p.id}')">+ Корзина</button>
-        </div>
-        <div class="${p.stock<=5?'pc-stock-low':'pc-stock-ok'}">${p.stock<=5?`⚠ Осталось ${p.stock} шт.`:`✓ В наличии: ${p.stock} шт.`}</div>
-        <div class="pc-code">Код 1С: ${p.code}</div>
+      <div class="pc-img">
+        ${p.emoji || p.image || '📦'}
+        ${p.badge ? `<span class="badge ${badgeCls}">${badgeLbl}</span>` : ''}
       </div>
-    </div>
-  `).join('');
+      <div class="pc-body">
+        <div class="pc-brand">${p.brand || ''}</div>
+        <div class="pc-name">${p.name}</div>
+        <div class="pc-desc">${desc.substring(0,72)}${desc.length > 72 ? '…' : ''}</div>
+        <div class="pc-foot">
+          <div>
+            <span class="pc-price">${fmt(p.price)} ₸</span>
+            ${p.oldPrice ? `<span class="pc-old">${fmt(p.oldPrice)} ₸</span>` : ''}
+          </div>
+          ${stock > 0
+            ? `<button class="add-btn" onclick="event.stopPropagation();addCart('${p.id}')">+ Корзина</button>`
+            : `<span style="font-size:12px;color:var(--muted)">Нет в наличии</span>`}
+        </div>
+        <div class="${stockCls}">${stockTxt}</div>
+      </div>
+    </div>`;
 }
 
-// PRODUCT PAGE
-function openProduct(id){
-  const p=P.find(x=>x.id===id); if(!p) return;
-  const disc=p.oldPrice?Math.round((1-p.price/p.oldPrice)*100):null;
-  document.getElementById('ppContent').innerHTML=`
-    <button class="pp-close-btn" onclick="document.getElementById('ppOverlay').classList.remove('open')">✕ Закрыть</button>
+// ── Страница товара ──────────────────────────────────
+function openProduct(id) {
+  const p = products.find(x => x.id === id || x.id === Number(id));
+  if (!p) return;
+
+  const stock    = Number(p.stock ?? p.quantity ?? 0);
+  const disc     = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : null;
+  const desc     = p.description || p.desc || '';
+  const specs    = p.specs || p.characteristics || null;
+  const specsHTML = specs
+    ? `<div class="pp-specs"><h3>Характеристики</h3><div class="specs-grid">
+        ${Object.entries(specs).map(([k,v]) =>
+          `<div class="spec-item"><div class="spec-k">${k}</div><div class="spec-v">${v}</div></div>`
+        ).join('')}
+       </div></div>`
+    : '';
+
+  document.getElementById('ppContent').innerHTML = `
+    <button class="pp-close" onclick="closeModal('ppOverlay')">✕ Закрыть</button>
     <div class="pp-top">
-      <div class="pp-img-wrap">${p.e}</div>
+      <div class="pp-img-w">${p.emoji || p.image || '📦'}</div>
       <div class="pp-info">
-        <div class="pp-brand">${p.brand}</div>
+        <div class="pp-brand">${p.brand || ''}</div>
         <div class="pp-name">${p.name}</div>
-        <div class="pp-desc">${p.desc}</div>
+        <div class="pp-desc">${desc}</div>
         <div class="pp-price">${fmt(p.price)} ₸</div>
-        ${p.oldPrice?`<div class="pp-old-row"><span class="pp-old">${fmt(p.oldPrice)} ₸</span><span class="pp-discount">−${disc}%</span></div>`:'<div style="margin-bottom:18px"></div>'}
+        ${p.oldPrice
+          ? `<div class="pp-old-row"><span class="pp-old">${fmt(p.oldPrice)} ₸</span><span class="pp-disc">−${disc}%</span></div>`
+          : '<div style="margin-bottom:18px"></div>'}
         <div class="pp-meta">
-          <div class="pp-meta-r"><span class="pp-meta-k">Категория:</span><span class="pp-meta-v">${p.cat}</span></div>
-          <div class="pp-meta-r"><span class="pp-meta-k">Остаток:</span><span class="pp-meta-v" style="color:${p.stock<=5?'var(--burgundy)':'#1e5c3a'}">${p.stock} шт.</span></div>
-          <div class="pp-meta-r"><span class="pp-meta-k">Код 1С:</span><span class="pp-meta-v" style="font-family:'Courier New';font-size:13px">${p.code}</span></div>
+          ${p.category ? `<div class="pp-mr"><span class="pp-mk">Категория:</span><span class="pp-mv">${p.category}</span></div>` : ''}
+          <div class="pp-mr">
+            <span class="pp-mk">В наличии:</span>
+            <span class="pp-mv" style="color:${stock===0?'var(--muted)':stock<=5?'var(--burgundy)':'#1e5c3a'}">
+              ${stock === 0 ? 'Нет в наличии' : stock + ' шт.'}
+            </span>
+          </div>
         </div>
-        <button class="pp-add-btn" onclick="addCart('${p.id}');document.getElementById('ppOverlay').classList.remove('open')">Добавить в корзину</button>
+        <button class="pp-add" ${stock === 0 ? 'disabled' : ''}
+          onclick="addCart('${p.id}');closeModal('ppOverlay')">
+          ${stock > 0 ? 'Добавить в корзину' : 'Нет в наличии'}
+        </button>
       </div>
     </div>
-    <div class="pp-bottom">
-      <h3>Характеристики</h3>
-      <div class="pp-specs-grid">${Object.entries(p.specs).map(([k,v])=>`<div class="pp-spec"><div class="pp-sk">${k}</div><div class="pp-sv">${v}</div></div>`).join('')}</div>
-    </div>
+    ${specsHTML}
   `;
   document.getElementById('ppOverlay').classList.add('open');
 }
 
-// CART
-function addCart(id){
-  const p=P.find(x=>x.id===id); if(!p) return;
-  const ex=cart.find(x=>x.id===id);
-  if(ex) ex.qty++; else cart.push({...p,qty:1});
-  updCartCount(); toast(`✓ ${p.name} добавлен`);
+// ── Корзина ──────────────────────────────────────────
+function addCart(id) {
+  const p = products.find(x => x.id === id || x.id === Number(id));
+  if (!p) return;
+  const stock = Number(p.stock ?? p.quantity ?? 0);
+  if (stock === 0) return;
+  const ex = cart.find(x => x.id === p.id);
+  if (ex) ex.qty++;
+  else cart.push({ ...p, qty: 1 });
+  updCount();
+  toast(`✓ ${p.name} добавлен в корзину`);
 }
-function updCartCount(){
-  document.getElementById('cartCount').textContent=cart.reduce((s,x)=>s+x.qty,0);
+
+function updCount() {
+  document.getElementById('cartCount').textContent = cart.reduce((s,x) => s + x.qty, 0);
 }
-function openCart(){renderCart();document.getElementById('cartOverlay').classList.add('open');}
-function closeCart(){document.getElementById('cartOverlay').classList.remove('open');}
-function renderCart(){
-  const b=document.getElementById('cartBody');
-  if(!cart.length){b.innerHTML='<div class="cd-empty"><div class="ce-icon">🛍</div>Корзина пуста.<br>Добавьте товары из каталога.</div>';document.getElementById('cartTot').textContent='0 ₸';return;}
-  b.innerHTML=cart.map(it=>`
+
+function openCart() { renderCart(); document.getElementById('cartOv').classList.add('open'); }
+function closeCart() { document.getElementById('cartOv').classList.remove('open'); }
+
+function renderCart() {
+  const b = document.getElementById('cartBody');
+  if (!cart.length) {
+    b.innerHTML = '<div class="cd-empty"><div class="ei">🛍</div>Корзина пуста.<br>Добавьте товары из каталога.</div>';
+    document.getElementById('cartTot').textContent = '0 ₸';
+    return;
+  }
+  b.innerHTML = cart.map(it => `
     <div class="cart-item">
-      <div class="ci-img">${it.e}</div>
+      <div class="ci-img">${it.emoji || it.image || '📦'}</div>
       <div class="ci-inf">
         <div class="ci-name">${it.name}</div>
-        <div class="ci-price">${fmt(it.price*it.qty)} ₸</div>
+        <div class="ci-price">${fmt(it.price * it.qty)} ₸</div>
         <div class="ci-qty">
           <button class="qty-btn" onclick="chQty('${it.id}',-1)">−</button>
           <span style="font-size:13px;font-weight:700;min-width:18px;text-align:center">${it.qty}</span>
           <button class="qty-btn" onclick="chQty('${it.id}',1)">+</button>
-          <span class="ci-rm" onclick="rmItem('${it.id}')">✕ удалить</span>
+          <span class="ci-rm" onclick="rmItem('${it.id}')">✕</span>
         </div>
       </div>
-    </div>
-  `).join('');
-  const tot=cart.reduce((s,x)=>s+x.price*x.qty,0);
-  document.getElementById('cartTot').textContent=fmt(tot)+' ₸';
+    </div>`).join('');
+  document.getElementById('cartTot').textContent = fmt(cart.reduce((s,x) => s + x.price * x.qty, 0)) + ' ₸';
 }
-function chQty(id,d){const it=cart.find(x=>x.id===id);if(!it)return;it.qty+=d;if(it.qty<=0)cart=cart.filter(x=>x.id!==id);updCartCount();renderCart();}
-function rmItem(id){cart=cart.filter(x=>x.id!==id);updCartCount();renderCart();}
-function checkout(){
-  if(!cart.length){toast('Корзина пуста!');return;}
-  const tot=cart.reduce((s,x)=>s+x.price*x.qty,0);
-  const num='ЗК-'+Math.floor(Math.random()*90000+10000);
-  const now=new Date().toLocaleString('ru-RU');
-  document.getElementById('cbMeta').innerHTML=`
+
+function chQty(id, d) {
+  const it = cart.find(x => x.id === id);
+  if (!it) return;
+  it.qty += d;
+  if (it.qty <= 0) cart = cart.filter(x => x.id !== id);
+  updCount(); renderCart();
+}
+function rmItem(id) { cart = cart.filter(x => x.id !== id); updCount(); renderCart(); }
+
+function checkout() {
+  if (!cart.length) { toast('Корзина пуста!'); return; }
+  const tot = cart.reduce((s,x) => s + x.price * x.qty, 0);
+  const num = 'ORD-' + Math.floor(Math.random() * 90000 + 10000);
+  document.getElementById('cbMeta').innerHTML = `
     <div class="cb-row"><span class="lbl">Номер заказа:</span><span class="val">${num}</span></div>
     <div class="cb-row"><span class="lbl">Позиций:</span><span class="val">${cart.length}</span></div>
     <div class="cb-row"><span class="lbl">Сумма:</span><span class="val">${fmt(tot)} ₸</span></div>
-    <div class="cb-row"><span class="lbl">Время:</span><span class="val">${now}</span></div>
-    <div class="cb-row"><span class="lbl">Статус 1С:</span><span class="val" style="color:#1e5c3a">✓ Записан</span></div>
+    <div class="cb-row"><span class="lbl">Время:</span><span class="val">${new Date().toLocaleString('ru-RU')}</span></div>
   `;
-  cart=[];updCartCount();closeCart();
+  cart = []; updCount(); closeCart();
   document.getElementById('confirmOv').classList.add('open');
 }
 
-function closeIfBg(e,id){if(e.target.id===id)document.getElementById(id).classList.remove('open');}
-
-// JSON EXAMPLES
-const jsonData={
-  get:`{
-  <span class="jc">// Ответ HTTP-сервиса 1С (GET /hs/WebShop/GetProducts)</span>
-  <span class="jk">"metadata"</span>: {
-    <span class="jk">"source"</span>: <span class="js">"1С:Розница KZ 2.3"</span>,
-    <span class="jk">"syncTime"</span>: <span class="js">"2024-05-15T10:30:00"</span>,
-    <span class="jk">"totalItems"</span>: <span class="jn">10</span>
-  },
-  <span class="jk">"items"</span>: [
-    {
-      <span class="jk">"Код"</span>: <span class="js">"ADID-F101"</span>,
-      <span class="jk">"Наименование"</span>: <span class="js">"Бутсы Predator Accuracy"</span>,
-      <span class="jk">"Категория"</span>: <span class="js">"Футбол"</span>,
-      <span class="jk">"Цена"</span>: <span class="jn">42000</span>,
-      <span class="jk">"Валюта"</span>: <span class="js">"KZT"</span>,
-      <span class="jk">"ОстатокСклад"</span>: <span class="jn">12</span>,
-      <span class="jk">"Единица"</span>: <span class="js">"шт"</span>,
-      <span class="jk">"Активен"</span>: <span class="jb">true</span>
-    }
-  ]
-}`,
-  post:`<span class="jc">// POST /hs/WebShop/CreateOrder — запрос с сайта в 1С</span>
-{
-  <span class="jk">"НомерСайта"</span>: <span class="js">"ORD-2024-1057"</span>,
-  <span class="jk">"КлиентEmail"</span>: <span class="js">"client@email.kz"</span>,
-  <span class="jk">"Товары"</span>: [
-    {
-      <span class="jk">"Код"</span>: <span class="js">"ADID-F101"</span>,
-      <span class="jk">"Количество"</span>: <span class="jn">2</span>,
-      <span class="jk">"Цена"</span>: <span class="jn">42000</span>
-    }
-  ],
-  <span class="jk">"СуммаИтого"</span>: <span class="jn">84000</span>,
-  <span class="jk">"Валюта"</span>: <span class="js">"KZT"</span>
+// ── Ошибка загрузки ──────────────────────────────────
+function showError(msg) {
+  document.getElementById('catSub').textContent = 'Ошибка загрузки';
+  document.getElementById('grid').innerHTML = `
+    <div class="err-box">
+      <div class="err-icon">⚠️</div>
+      <h3>Не удалось загрузить каталог</h3>
+      <p>${msg}<br>Убедитесь, что сервер доступен по адресу:<br><code style="font-size:13px;color:var(--burgundy)">${CATALOG_URL}</code></p>
+      <button class="retry-btn" onclick="loadCatalog()">Повторить</button>
+    </div>`;
 }
 
-<span class="jc">// Ответ 1С — документ создан:</span>
-{
-  <span class="jk">"НомерДокумента"</span>: <span class="js">"ЗК-000514"</span>,
-  <span class="jk">"Статус"</span>: <span class="js">"Принят"</span>,
-  <span class="jk">"ДатаВремя"</span>: <span class="js">"2024-05-15T10:35:22"</span>,
-  <span class="jk">"Склад"</span>: <span class="js">"Основной склад"</span>
-}`
-};
-
-function showJson(tab,el){
-  document.querySelectorAll('.jt').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('jsonCode').innerHTML=jsonData[tab];
+// ── Утилиты ──────────────────────────────────────────
+function fmt(n) { return Number(n).toLocaleString('ru-RU'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function bgClose(e, id) { if (e.target.id === id) closeModal(id); }
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-// TOAST
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
-
-// INIT — эмуляция загрузки из 1С
-window.addEventListener('DOMContentLoaded',()=>{
-  setTimeout(()=>{
-    document.getElementById('loader').classList.add('done');
-    renderCounts();
-    renderGrid();
-    document.getElementById('jsonCode').innerHTML=jsonData.get;
-    document.getElementById('syncLabel').textContent='1С: синхронизировано';
-  },2000);
-});
+// ── Старт ────────────────────────────────────────────
+loadCatalog();
 </script>
 </body>
 </html>
