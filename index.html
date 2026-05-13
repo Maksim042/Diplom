@@ -102,7 +102,8 @@ section{padding:64px 48px;}
 .b-hit{background:#7b4c00;color:#fff;}
 .pc-body{padding:16px;}
 .pc-brand{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:3px;}
-.pc-name{font-weight:700;font-size:14px;margin-bottom:6px;}
+.pc-name{font-weight:700;font-size:14px;margin-bottom:4px;}
+.pc-char{font-size:11px;color:var(--text-mid);margin-bottom:6px;font-style:italic;}
 .pc-desc{font-size:12px;color:var(--muted);margin-bottom:13px;line-height:1.5;}
 .pc-foot{display:flex;align-items:center;justify-content:space-between;}
 .pc-price{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--burgundy);}
@@ -124,7 +125,7 @@ section{padding:64px 48px;}
 /* PRODUCT MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(20,8,12,.52);z-index:200;align-items:center;justify-content:center;padding:28px;}
 .overlay.open{display:flex;}
-.pp{background:var(--white);border-radius:14px;max-width:880px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.22);animation:ppIn .24s ease;position:relative;}
+.pp{background:var(--white);border-radius:14px;max-width:920px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.22);animation:ppIn .24s ease;position:relative;}
 @keyframes ppIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
 .pp-top{display:grid;grid-template-columns:1fr 1fr;}
 .pp-img-w{background:var(--burgundy-pale);border-radius:14px 0 0 0;height:360px;display:flex;align-items:center;justify-content:center;font-size:110px;}
@@ -138,18 +139,23 @@ section{padding:64px 48px;}
 .pp-disc{background:var(--burgundy);color:#fff;border-radius:5px;padding:2px 8px;font-size:11px;font-weight:700;}
 .pp-meta{display:flex;flex-direction:column;gap:7px;margin:16px 0 22px;}
 .pp-mr{display:flex;gap:8px;font-size:13px;}
-.pp-mk{color:var(--muted);min-width:96px;}
+.pp-mk{color:var(--muted);min-width:110px;}
 .pp-mv{font-weight:600;}
 .pp-add{width:100%;background:var(--burgundy);color:#fff;padding:14px;border-radius:9px;font-size:14px;font-weight:700;transition:background .2s;}
 .pp-add:hover{background:var(--burgundy-dark);}
 .pp-add:disabled{background:var(--muted);cursor:not-allowed;}
 .pp-close{position:absolute;top:14px;right:14px;background:var(--bg);border:1px solid var(--border);color:var(--text-mid);border-radius:8px;padding:7px 16px;font-size:12px;font-weight:600;cursor:pointer;z-index:2;}
-.pp-specs{padding:24px 36px;border-top:1px solid var(--border);}
-.pp-specs h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:14px;}
-.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.spec-item{background:var(--bg);border-radius:8px;padding:12px 16px;}
-.spec-k{font-size:11px;color:var(--muted);margin-bottom:3px;}
-.spec-v{font-size:14px;font-weight:600;}
+
+/* Склады в модалке */
+.pp-warehouses{padding:20px 36px;border-top:1px solid var(--border);}
+.pp-warehouses h3{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:12px;}
+.wh-table{width:100%;border-collapse:collapse;font-size:13px;}
+.wh-table th{text-align:left;color:var(--muted);font-weight:600;padding:6px 12px;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.8px;}
+.wh-table td{padding:8px 12px;border-bottom:1px solid var(--surface);}
+.wh-table tr:last-child td{border-bottom:none;}
+.wh-qty-ok{color:#1e5c3a;font-weight:700;}
+.wh-qty-low{color:var(--burgundy);font-weight:700;}
+.wh-qty-no{color:var(--muted);}
 
 /* CART */
 .cart-ov{display:none;position:fixed;inset:0;background:rgba(20,8,12,.5);z-index:300;justify-content:flex-end;}
@@ -165,7 +171,8 @@ section{padding:64px 48px;}
 .cart-item{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);}
 .ci-img{width:62px;height:62px;background:var(--burgundy-pale);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;}
 .ci-inf{flex:1;}
-.ci-name{font-weight:600;font-size:13px;margin-bottom:3px;}
+.ci-name{font-weight:600;font-size:13px;margin-bottom:1px;}
+.ci-char{font-size:11px;color:var(--muted);margin-bottom:3px;font-style:italic;}
 .ci-price{font-family:'Playfair Display',serif;font-size:17px;color:var(--burgundy);font-weight:700;}
 .ci-qty{display:flex;align-items:center;gap:9px;margin-top:7px;}
 .qty-btn{background:var(--bg);border:1px solid var(--border);color:var(--text);width:27px;height:27px;border-radius:6px;font-size:14px;}
@@ -281,8 +288,7 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
     <button class="chip active" onclick="setSort('default',this)">По умолчанию</button>
     <button class="chip" onclick="setSort('asc',this)">Цена ↑</button>
     <button class="chip" onclick="setSort('desc',this)">Цена ↓</button>
-    <button class="chip" onclick="setSort('new',this)">Новинки</button>
-    <button class="chip" onclick="setSort('sale',this)">Со скидкой</button>
+    <button class="chip" onclick="setSort('instock',this)">В наличии</button>
   </div>
   <div id="grid">
     <div class="skeleton-grid">
@@ -317,14 +323,10 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
   <div>
     <div class="ft-h">Каталог</div>
     <a class="ft-a" href="#catalog">Все товары</a>
-    <a class="ft-a" href="#catalog">Футбол</a>
-    <a class="ft-a" href="#catalog">Фитнес</a>
-    <a class="ft-a" href="#catalog">Бег</a>
   </div>
   <div>
     <div class="ft-h">Информация</div>
     <a class="ft-a" href="#delivery">Доставка и оплата</a>
-    <a class="ft-a" href="#">Возврат товара</a>
     <a class="ft-a" href="#">Контакты</a>
   </div>
 </footer>
@@ -369,23 +371,81 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
 <div class="toast" id="toast"></div>
 
 <script>
-// ── Адрес каталога ──────────────────────────────────
-const CATALOG_URL = 'http://localhost/RoznisaNE_TROGAT_DIPLOM/hs/RetailAPI/GetItemsFull';
-// ────────────────────────────────────────────────────
+// ══════════════════════════════════════════════════════
+//  АДРЕС ДАННЫХ — raw JSON с GitHub
+//  Замените на свой URL файла с данными (raw.githubusercontent.com)
+// ══════════════════════════════════════════════════════
+const CATALOG_URL = 'https://raw.githubusercontent.com/Maksim042/Diplom/main/data.json';
+// ══════════════════════════════════════════════════════
 
+// Эмодзи по ключевым словам в названии товара
+const EMOJI_MAP = [
+  [/гантел/i,'🏋️'],[/штанг/i,'🏋️'],[/гриф/i,'🏋️'],[/блин/i,'⚖️'],
+  [/мяч/i,'⚽'],[/футбол/i,'⚽'],[/баскетбол/i,'🏀'],[/волейбол/i,'🏐'],
+  [/бег/i,'🏃'],[/кросс/i,'👟'],[/кеды/i,'👟'],[/кроссовк/i,'👟'],
+  [/бокс/i,'🥊'],[/перчатк/i,'🥊'],[/борьб/i,'🤼'],[/единоборств/i,'🥋'],
+  [/плавани/i,'🏊'],[/очки/i,'🥽'],[/шапочк/i,'🧢'],
+  [/велосипед/i,'🚴'],[/самокат/i,'🛴'],[/ролик/i,'⛸️'],
+  [/скакалк/i,'🪢'],[/обруч/i,'⭕'],[/коврик/i,'🧘'],
+  [/теннис/i,'🎾'],[/ракетк/i,'🏸'],[/бадминтон/i,'🏸'],
+  [/лыж/i,'⛷️'],[/сноуборд/i,'🏂'],
+];
+
+function getEmoji(name) {
+  for (const [re, em] of EMOJI_MAP) if (re.test(name)) return em;
+  return '📦';
+}
+
+// ── Нормализация данных из формата 1С ─────────────────
+// Разворачиваем: каждая характеристика → отдельная карточка товара
+function normalizeData(raw) {
+  const result = [];
+  const arr = Array.isArray(raw) ? raw : (raw.items || []);
+
+  arr.forEach(item => {
+    const chars = item['Характеристики'] || [];
+    chars.forEach(ch => {
+      // Суммируем количество по всем складам
+      const sklads = ch['Склады'] || [];
+      const totalQty = sklads.reduce((s, sk) => s + Number(sk['Количество'] || 0), 0);
+      const price    = Number(ch['Цена'] || 0);
+      const charName = ch['Характеристика'] || '';
+      const isBaseChar = /баз/i.test(charName); // «Баз характеристики» — без суффикса
+
+      const displayName = isBaseChar
+        ? item['Номенклатура']
+        : `${item['Номенклатура']} (${charName})`;
+
+      result.push({
+        id:        `${item['НоменклатураGUID']}_${ch['ХарактеристикаGUID']}`,
+        guid:      item['НоменклатураGUID'],
+        charGuid:  ch['ХарактеристикаGUID'],
+        name:      item['Номенклатура'],
+        charName:  isBaseChar ? '' : charName,
+        displayName,
+        price,
+        stock:     totalQty,
+        sklads,    // для детальной страницы
+        emoji:     getEmoji(item['Номенклатура']),
+      });
+    });
+  });
+
+  return result;
+}
+
+// ── Состояние ─────────────────────────────────────────
 let products = [];
-let curCat   = 'all';
 let curSort  = 'default';
 let cart     = [];
 
-// ── Загрузка каталога ───────────────────────────────
+// ── Загрузка ──────────────────────────────────────────
 async function loadCatalog() {
   try {
     const res = await fetch(CATALOG_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error(`Статус: ${res.status}`);
-    const data = await res.json();
-    // поддерживаем два формата: { items: [...] } или просто [...]
-    products = Array.isArray(data) ? data : (data.items || []);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const raw = await res.json();
+    products = normalizeData(raw);
     onLoaded();
   } catch (e) {
     showError(e.message);
@@ -393,37 +453,12 @@ async function loadCatalog() {
 }
 
 function onLoaded() {
-  buildCategories();
-  renderGrid();
   document.getElementById('hTotal').textContent = products.length;
-}
-
-// ── Категории из данных ─────────────────────────────
-function buildCategories() {
-  const cats = [...new Set(products.map(p => p.category).filter(Boolean))];
-  const row  = document.getElementById('catRow');
-  document.getElementById('cntAll').textContent = products.length;
-
-  const catEmoji = { Футбол:'⚽', Фитнес:'🏋️', Бег:'🏃', Единоборства:'🥊', Плавание:'🏊' };
-
-  cats.forEach(cat => {
-    const cnt = products.filter(p => p.category === cat).length;
-    const btn = document.createElement('button');
-    btn.className = 'cat-pill';
-    btn.innerHTML = `${catEmoji[cat] || '🏅'} ${cat} <span class="cat-cnt">${cnt}</span>`;
-    btn.onclick = () => filterCat(cat, btn);
-    row.appendChild(btn);
-  });
-}
-
-// ── Фильтр / сортировка ─────────────────────────────
-function filterCat(cat, el) {
-  curCat = cat;
-  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
+  document.getElementById('cntAll').textContent  = products.length;
   renderGrid();
 }
 
+// ── Сортировка ────────────────────────────────────────
 function setSort(sort, el) {
   curSort = sort;
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
@@ -431,24 +466,27 @@ function setSort(sort, el) {
   renderGrid();
 }
 
+function filterCat(cat, el) {
+  // Категорий в новом формате нет — кнопка «Все» всегда одна
+  renderGrid();
+}
+
 function getFiltered() {
-  let list = curCat === 'all' ? [...products] : products.filter(p => p.category === curCat);
-  if (curSort === 'asc')  list.sort((a,b) => a.price - b.price);
-  if (curSort === 'desc') list.sort((a,b) => b.price - a.price);
-  if (curSort === 'new')  list = [...list.filter(p => p.isNew), ...list.filter(p => !p.isNew)];
-  if (curSort === 'sale') list = [...list.filter(p => p.oldPrice), ...list.filter(p => !p.oldPrice)];
+  let list = [...products];
+  if (curSort === 'asc')     list.sort((a,b) => a.price - b.price);
+  if (curSort === 'desc')    list.sort((a,b) => b.price - a.price);
+  if (curSort === 'instock') list = [...list.filter(p => p.stock > 0), ...list.filter(p => p.stock === 0)];
   return list;
 }
 
-// ── Рендер сетки ────────────────────────────────────
+// ── Рендер сетки ──────────────────────────────────────
 function renderGrid() {
   const list = getFiltered();
-  document.getElementById('catSub').textContent =
-    curCat === 'all' ? `Все товары — ${list.length} позиций` : `${curCat} — ${list.length} товаров`;
+  document.getElementById('catSub').textContent = `Все товары — ${list.length} позиций`;
 
   if (!list.length) {
     document.getElementById('grid').innerHTML =
-      `<div class="err-box"><div class="err-icon">🔍</div><h3>Товары не найдены</h3><p>В этой категории пока нет товаров.</p></div>`;
+      `<div class="err-box"><div class="err-icon">🔍</div><h3>Товары не найдены</h3><p>Каталог пуст.</p></div>`;
     return;
   }
 
@@ -457,97 +495,96 @@ function renderGrid() {
 }
 
 function cardHTML(p) {
-  const badgeCls = p.badge === 'sale' ? 'b-sale' : p.badge === 'new' ? 'b-new' : 'b-hit';
-  const badgeLbl = p.badge === 'sale' ? 'Скидка' : p.badge === 'new' ? 'Новинка' : 'Хит';
-  const stock    = Number(p.stock ?? p.quantity ?? 0);
+  const stock    = p.stock;
   const stockCls = stock === 0 ? 'stock-none' : stock <= 5 ? 'stock-low' : 'stock-ok';
   const stockTxt = stock === 0 ? '✕ Нет в наличии' : stock <= 5 ? `⚠ Осталось ${stock} шт.` : `✓ В наличии: ${stock} шт.`;
-  const desc     = p.description || p.desc || '';
+  const safeId   = CSS.escape(p.id);
 
   return `
-    <div class="pc" onclick="openProduct('${p.id}')">
-      <div class="pc-img">
-        ${p.emoji || p.image || '📦'}
-        ${p.badge ? `<span class="badge ${badgeCls}">${badgeLbl}</span>` : ''}
-      </div>
+    <div class="pc" onclick="openProduct('${esc(p.id)}')">
+      <div class="pc-img">${p.emoji}</div>
       <div class="pc-body">
-        <div class="pc-brand">${p.brand || ''}</div>
         <div class="pc-name">${p.name}</div>
-        <div class="pc-desc">${desc.substring(0,72)}${desc.length > 72 ? '…' : ''}</div>
+        ${p.charName ? `<div class="pc-char">${p.charName}</div>` : ''}
         <div class="pc-foot">
           <div>
-            <span class="pc-price">${fmt(p.price)} ₸</span>
-            ${p.oldPrice ? `<span class="pc-old">${fmt(p.oldPrice)} ₸</span>` : ''}
+            ${p.price > 0
+              ? `<span class="pc-price">${fmt(p.price)} ₸</span>`
+              : `<span style="font-size:13px;color:var(--muted)">Цена не указана</span>`}
           </div>
-          ${stock > 0
-            ? `<button class="add-btn" onclick="event.stopPropagation();addCart('${p.id}')">+ Корзина</button>`
-            : `<span style="font-size:12px;color:var(--muted)">Нет в наличии</span>`}
+          ${stock > 0 && p.price > 0
+            ? `<button class="add-btn" onclick="event.stopPropagation();addCart('${esc(p.id)}')">+ Корзина</button>`
+            : `<span style="font-size:12px;color:var(--muted)">${p.price === 0 ? '—' : 'Нет в наличии'}</span>`}
         </div>
         <div class="${stockCls}">${stockTxt}</div>
       </div>
     </div>`;
 }
 
-// ── Страница товара ──────────────────────────────────
+// ── Детальная страница товара ─────────────────────────
 function openProduct(id) {
-  const p = products.find(x => x.id === id || x.id === Number(id));
+  const p = products.find(x => x.id === id);
   if (!p) return;
 
-  const stock    = Number(p.stock ?? p.quantity ?? 0);
-  const disc     = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : null;
-  const desc     = p.description || p.desc || '';
-  const specs    = p.specs || p.characteristics || null;
-  const specsHTML = specs
-    ? `<div class="pp-specs"><h3>Характеристики</h3><div class="specs-grid">
-        ${Object.entries(specs).map(([k,v]) =>
-          `<div class="spec-item"><div class="spec-k">${k}</div><div class="spec-v">${v}</div></div>`
-        ).join('')}
-       </div></div>`
+  const stock = p.stock;
+
+  // Таблица складов
+  const whRows = (p.sklads || []).map(sk => {
+    const qty = Number(sk['Количество'] || 0);
+    const cls = qty === 0 ? 'wh-qty-no' : qty <= 5 ? 'wh-qty-low' : 'wh-qty-ok';
+    return `<tr>
+      <td>${sk['Склад'] || '—'}</td>
+      <td class="${cls}">${qty} шт.</td>
+    </tr>`;
+  }).join('');
+
+  const whSection = whRows
+    ? `<div class="pp-warehouses">
+        <h3>Остатки по складам</h3>
+        <table class="wh-table">
+          <thead><tr><th>Склад</th><th>Количество</th></tr></thead>
+          <tbody>${whRows}</tbody>
+        </table>
+       </div>`
     : '';
 
   document.getElementById('ppContent').innerHTML = `
     <button class="pp-close" onclick="closeModal('ppOverlay')">✕ Закрыть</button>
     <div class="pp-top">
-      <div class="pp-img-w">${p.emoji || p.image || '📦'}</div>
+      <div class="pp-img-w" style="font-size:110px">${p.emoji}</div>
       <div class="pp-info">
-        <div class="pp-brand">${p.brand || ''}</div>
         <div class="pp-name">${p.name}</div>
-        <div class="pp-desc">${desc}</div>
-        <div class="pp-price">${fmt(p.price)} ₸</div>
-        ${p.oldPrice
-          ? `<div class="pp-old-row"><span class="pp-old">${fmt(p.oldPrice)} ₸</span><span class="pp-disc">−${disc}%</span></div>`
-          : '<div style="margin-bottom:18px"></div>'}
+        ${p.charName ? `<div style="font-size:13px;color:var(--muted);margin-bottom:12px;font-style:italic">${p.charName}</div>` : ''}
+        <div class="pp-price">${p.price > 0 ? fmt(p.price) + ' ₸' : 'Цена не указана'}</div>
+        <div style="margin-bottom:18px"></div>
         <div class="pp-meta">
-          ${p.category ? `<div class="pp-mr"><span class="pp-mk">Категория:</span><span class="pp-mv">${p.category}</span></div>` : ''}
           <div class="pp-mr">
-            <span class="pp-mk">В наличии:</span>
+            <span class="pp-mk">Всего на складах:</span>
             <span class="pp-mv" style="color:${stock===0?'var(--muted)':stock<=5?'var(--burgundy)':'#1e5c3a'}">
-              ${stock === 0 ? 'Нет в наличии' : stock + ' шт.'}
+              ${stock} шт.
             </span>
           </div>
         </div>
-        <button class="pp-add" ${stock === 0 ? 'disabled' : ''}
-          onclick="addCart('${p.id}');closeModal('ppOverlay')">
-          ${stock > 0 ? 'Добавить в корзину' : 'Нет в наличии'}
+        <button class="pp-add" ${(stock === 0 || p.price === 0) ? 'disabled' : ''}
+          onclick="addCart('${esc(p.id)}');closeModal('ppOverlay')">
+          ${stock > 0 && p.price > 0 ? 'Добавить в корзину' : 'Нет в наличии'}
         </button>
       </div>
     </div>
-    ${specsHTML}
+    ${whSection}
   `;
   document.getElementById('ppOverlay').classList.add('open');
 }
 
-// ── Корзина ──────────────────────────────────────────
+// ── Корзина ───────────────────────────────────────────
 function addCart(id) {
-  const p = products.find(x => x.id === id || x.id === Number(id));
-  if (!p) return;
-  const stock = Number(p.stock ?? p.quantity ?? 0);
-  if (stock === 0) return;
+  const p = products.find(x => x.id === id);
+  if (!p || p.stock === 0 || p.price === 0) return;
   const ex = cart.find(x => x.id === p.id);
   if (ex) ex.qty++;
   else cart.push({ ...p, qty: 1 });
   updCount();
-  toast(`✓ ${p.name} добавлен в корзину`);
+  toast(`✓ ${p.name}${p.charName ? ' ('+p.charName+')' : ''} добавлен в корзину`);
 }
 
 function updCount() {
@@ -566,15 +603,16 @@ function renderCart() {
   }
   b.innerHTML = cart.map(it => `
     <div class="cart-item">
-      <div class="ci-img">${it.emoji || it.image || '📦'}</div>
+      <div class="ci-img">${it.emoji}</div>
       <div class="ci-inf">
         <div class="ci-name">${it.name}</div>
+        ${it.charName ? `<div class="ci-char">${it.charName}</div>` : ''}
         <div class="ci-price">${fmt(it.price * it.qty)} ₸</div>
         <div class="ci-qty">
-          <button class="qty-btn" onclick="chQty('${it.id}',-1)">−</button>
+          <button class="qty-btn" onclick="chQty('${esc(it.id)}',-1)">−</button>
           <span style="font-size:13px;font-weight:700;min-width:18px;text-align:center">${it.qty}</span>
-          <button class="qty-btn" onclick="chQty('${it.id}',1)">+</button>
-          <span class="ci-rm" onclick="rmItem('${it.id}')">✕</span>
+          <button class="qty-btn" onclick="chQty('${esc(it.id)}',1)">+</button>
+          <span class="ci-rm" onclick="rmItem('${esc(it.id)}')">✕</span>
         </div>
       </div>
     </div>`).join('');
@@ -604,20 +642,25 @@ function checkout() {
   document.getElementById('confirmOv').classList.add('open');
 }
 
-// ── Ошибка загрузки ──────────────────────────────────
+// ── Ошибка загрузки ───────────────────────────────────
 function showError(msg) {
   document.getElementById('catSub').textContent = 'Ошибка загрузки';
   document.getElementById('grid').innerHTML = `
     <div class="err-box">
       <div class="err-icon">⚠️</div>
       <h3>Не удалось загрузить каталог</h3>
-      <p>${msg}<br>Убедитесь, что сервер доступен по адресу:<br><code style="font-size:13px;color:var(--burgundy)">${CATALOG_URL}</code></p>
+      <p>${msg}<br><br>Убедитесь, что файл доступен по адресу:<br>
+      <code style="font-size:12px;color:var(--burgundy);word-break:break-all">${CATALOG_URL}</code><br><br>
+      Файл должен быть в формате JSON и содержать массив объектов с полями<br>
+      <code style="font-size:12px">Номенклатура, НоменклатураGUID, Характеристики[{Цена, Склады}]</code>
+      </p>
       <button class="retry-btn" onclick="loadCatalog()">Повторить</button>
     </div>`;
 }
 
-// ── Утилиты ──────────────────────────────────────────
+// ── Утилиты ───────────────────────────────────────────
 function fmt(n) { return Number(n).toLocaleString('ru-RU'); }
+function esc(s) { return String(s).replace(/'/g, "\\'"); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 function bgClose(e, id) { if (e.target.id === id) closeModal(id); }
 function toast(msg) {
@@ -626,7 +669,7 @@ function toast(msg) {
   setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-// ── Старт ────────────────────────────────────────────
+// ── Старт ─────────────────────────────────────────────
 loadCatalog();
 </script>
 </body>
