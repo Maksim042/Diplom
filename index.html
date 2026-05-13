@@ -372,8 +372,7 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
 
 <script>
 // ══════════════════════════════════════════════════════
-//  АДРЕС ДАННЫХ — raw JSON с GitHub
-//  Замените на свой URL файла с данными (raw.githubusercontent.com)
+//  АДРЕС API 1С
 // ══════════════════════════════════════════════════════
 const CATALOG_URL = 'http://206.62.54.117/RoznisaNE_TROGAT_DIPLOM/hs/RetailAPI/GetItemsFull';
 // ══════════════════════════════════════════════════════
@@ -442,7 +441,10 @@ let cart     = [];
 // ── Загрузка ──────────────────────────────────────────
 async function loadCatalog() {
   try {
-    const res = await fetch(CATALOG_URL, { cache: 'no-cache' });
+    const res = await fetch(CATALOG_URL, {
+      cache: 'no-cache',
+      headers: { 'Authorization': 'Basic ' + btoa('Программист:') }
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.json();
     products = normalizeData(raw);
