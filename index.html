@@ -443,7 +443,7 @@ async function loadCatalog() {
   try {
     const res = await fetch(CATALOG_URL, {
       cache: 'no-cache',
-      headers: { 'Authorization': 'Basic ' + btoa('Программист:') }
+      headers: { 'Authorization': 'Basic ' + btoa(unescape(encodeURIComponent('Программист:'))) }
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.json();
