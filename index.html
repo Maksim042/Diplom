@@ -372,9 +372,9 @@ footer{background:var(--burgundy-dark);color:rgba(255,255,255,.65);padding:44px 
 
 <script>
 // ══════════════════════════════════════════════════════
-//  АДРЕС API 1С
+//  Запрос идёт через proxy.php (лежит рядом с этим файлом)
 // ══════════════════════════════════════════════════════
-const CATALOG_URL = 'https://206.62.54.117/RoznisaNE_TROGAT_DIPLOM/hs/RetailAPI/GetItemsFull';
+const CATALOG_URL = 'proxy.php';
 // ══════════════════════════════════════════════════════
 
 // Эмодзи по ключевым словам в названии товара
@@ -441,10 +441,7 @@ let cart     = [];
 // ── Загрузка ──────────────────────────────────────────
 async function loadCatalog() {
   try {
-    const res = await fetch(CATALOG_URL, {
-      cache: 'no-cache',
-      headers: { 'Authorization': 'Basic ' + btoa(unescape(encodeURIComponent('Программист:'))) }
-    });
+    const res = await fetch(CATALOG_URL, { cache: 'no-cache' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const raw = await res.json();
     products = normalizeData(raw);
